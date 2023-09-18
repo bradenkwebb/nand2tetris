@@ -42,5 +42,23 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-    
+        Mux16 (a=x, b=false, sel=zx, out=zxOut);        // zero the x in put
+        Not16 (in=zxOut, out=notzxOut);                 
+        Mux16 (a=zxOut, b=notzxOut, sel=nx, out=nxOut); // negate the x in put
+
+        Mux16 (a=y, b=false, sel=zy, out=zyOut);        // negate the y in put
+        Not16 (in=zyOut, out=notzyOut);
+        Mux16 (a=zyOut, b=notzyOut, sel=ny, out=nyOut); // negate the y in put
+
+        Add16 (a=nxOut, b=nyOut, out=sum);              // compute x + y
+        And16 (a=nxOut, b=nyOut, out=conjunction);      // compute x & y
+        Mux16 (a=conjunction, b=sum, sel=f, out=sumOrConj);
+
+        Not16 (in=sumOrConj, out=notOut);
+        Mux16 (a=sumOrConj, b=notOut, sel=no, out=out, out=inzr, out[15]=msbOut);
+
+        Or16Way (in=inzr, out=notzr);           // not sure it was necessary to define this chip
+        Not (in=notzr, out=zr);
+
+        Mux (a=false, b=true, sel=msbOut, out=ng);        
 }
