@@ -1,8 +1,4 @@
 projects/01/*.out
 projects/02/*.out
-tools/bin/classes 
-tools/bin/help 
-tools/bin/images 
-tools/bin/lib 
-tools/bin/scripts
-tools/bin/Hardware Simulator.dat
+projects/03/*.out
+tools/bin/*
