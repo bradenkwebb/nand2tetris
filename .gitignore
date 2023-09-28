@@ -1,4 +1,5 @@
 projects/01/*.out
 projects/02/*.out
-projects/03/*.out
-tools/bin/*
+projects/03/a/*.out
+projects/03/b/*.out
+tools/bin/*.dat
