@@ -1,0 +1,16 @@
+// a higher-level pseudo-code outline
+
+while True:
+    k = mem value of KBD
+    if k != 0:
+        // turn entire screen black
+        i = 0
+        loc = screen_mem_start
+        while i < 8192:
+            M = -1
+            D = A
+            i = 
+
+        for 
+    else:
+        // turn entire screen white
